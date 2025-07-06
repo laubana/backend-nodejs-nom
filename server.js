@@ -3,7 +3,6 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
-const morgan = require("morgan");
 const multer = require("multer");
 const path = require("path");
 
@@ -18,7 +17,6 @@ const app = express();
 app.use(cookieParser());
 app.use(cors(corsConfig));
 app.use(express.json());
-app.use(morgan("dev"));
 
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use("/auth", require("./routes/authRoutes"));
@@ -55,11 +53,11 @@ app.use((error, _req, res, _next) => {
 app.all("*", (req, res) => {
   res.status(404);
   if (req.accepts("html")) {
-    res.sendFile(path.join(__dirname, "views", "404.html"));
+    res.sendFile(path.join(__dirname, "public", "not-found.html"));
   } else if (req.accepts("json")) {
-    res.json({ message: "404 Not Found" });
+    res.json({ message: "Not Found" });
   } else {
-    res.type("txt").send("404 Not Found");
+    res.type("txt").send("Not Found");
   }
 });
 

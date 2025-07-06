@@ -1,9 +1,10 @@
-const User = require("../models/User");
-const Merchant = require("../models/Merchant");
-const Consumer = require("../models/Consumer");
 const bcrypt = require("bcryptjs");
-const { validateEmail, validateLength } = require("../helpers/validation");
 const jwt = require("jsonwebtoken");
+
+const { validateEmail, validateLength } = require("../helpers/validation");
+const Consumer = require("../models/Consumer");
+const Merchant = require("../models/Merchant");
+const User = require("../models/User");
 
 const register = async (req, res) => {
   try {

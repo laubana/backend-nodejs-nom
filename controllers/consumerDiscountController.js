@@ -1,8 +1,7 @@
 const { generateQrCode } = require("../helpers/qrCode");
-
+const Merchant = require("../helpers/qrCode");
 const ConsumerDiscount = require("../models/ConsumerDiscount");
 const Discount = require("../models/Discount");
-const Merchant = require("../models/Merchant");
 
 const getAllConsumerDiscounts = async (req, res) => {
   try {

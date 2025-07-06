@@ -1,11 +1,12 @@
-const openAi = require("../services/openAi");
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
+
 const { stringToDate } = require("../helpers/date");
 const Ad = require("../models/Ad");
 const AdPrice = require("../models/AdPrice");
 const StripeCustomer = require("../models/StripeCustomer");
-const stripe = require("stripe")(process.env.STRIPE_SECRET);
+const openAi = require("../services/openAi");
 
-const getAds = async (req, res) => {
+const getAds = async (_req, res) => {
   try {
     const ads = await Ad.find()
       .populate({

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const Discount = require("../models/Discount");
+
 const MenuDiscount = require("../models/MenuDiscount");
+const Discount = require("../models/Discount");
 
 const addDiscount = async (req, res) => {
   let session;

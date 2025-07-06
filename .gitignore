@@ -7,11 +7,5 @@ node_modules/
 # macOS
 .DS_Store
 
-# logs
-logs/*.log
-
-# eslint
-.eslintcache
-
 # vscode
 .vscode/

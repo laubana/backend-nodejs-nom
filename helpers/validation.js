@@ -13,7 +13,3 @@ exports.validateLength = (text, min, max) => {
     return true;
   }
 };
-
-exports.validateUsername = async (username) => {
-  // validate email or username if it is not yet existing in the db
-};

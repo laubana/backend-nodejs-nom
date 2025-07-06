@@ -1,4 +1,5 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
+
 const { extractedInfo } = require("../helpers/stripe");
 const StripeCustomer = require("../models/StripeCustomer");
 
