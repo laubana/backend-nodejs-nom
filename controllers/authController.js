@@ -92,13 +92,13 @@ const login = async (req, res) => {
 
     const accessToken = jwt.sign(
       accessTokenPayload,
-      process.env.ACCESS_TOKEN_SECRET,
+      process.env.ACCESS_TOKEN_SECRET || "9aq~&_8F<Qq=>EZzwhWFE=DJ$dI+<T",
       { expiresIn: "5d" }
     );
 
     const refreshToken = jwt.sign(
       { email: foundUser.email },
-      process.env.REFRESH_TOKEN_SECRET,
+      process.env.REFRESH_TOKEN_SECRET || "DaL0`oWAXQ.z|uLPf6rBwYS$^CRyV8",
       { expiresIn: "30d" }
     );
 
@@ -124,7 +124,7 @@ const refresh = (req, res) => {
 
     jwt.verify(
       refreshToken,
-      process.env.REFRESH_TOKEN_SECRET,
+      process.env.REFRESH_TOKEN_SECRET || "DaL0`oWAXQ.z|uLPf6rBwYS$^CRyV8",
       async (err, decoded) => {
         if (err) return res.status(403).json({ message: "Forbidden" });
 
@@ -143,7 +143,7 @@ const refresh = (req, res) => {
               role: foundUser.role,
             },
           },
-          process.env.ACCESS_TOKEN_SECRET,
+          process.env.ACCESS_TOKEN_SECRET || "9aq~&_8F<Qq=>EZzwhWFE=DJ$dI+<T",
           { expiresIn: "1d" }
         );
 

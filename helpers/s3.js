@@ -25,6 +25,6 @@ exports.s3UploadV3 = async (files) => {
 
   return results.map((result, index) => ({
     ...result,
-    Key: process.env.AWS_S3_UPLOAD_URL + params[index]._key,
+    Key: process.env.AWS_URL + params[index]._key,
   }));
 };

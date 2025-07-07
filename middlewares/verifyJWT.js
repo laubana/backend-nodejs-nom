@@ -7,19 +7,23 @@ const verifyJWT = (req, res, next) => {
   }
 
   const token = authHeader.split(" ")[1];
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
-    if (err) return res.status(403).json({ message: "Forbidden" });
-    req.id = decoded.UserInfo.id;
-    req.user = decoded.UserInfo.email;
-    req.role = decoded.UserInfo.role;
+  jwt.verify(
+    token,
+    process.env.ACCESS_TOKEN_SECRET || "9aq~&_8F<Qq=>EZzwhWFE=DJ$dI+<T",
+    (err, decoded) => {
+      if (err) return res.status(403).json({ message: "Forbidden" });
+      req.id = decoded.UserInfo.id;
+      req.user = decoded.UserInfo.email;
+      req.role = decoded.UserInfo.role;
 
-    if (req.role == "consumer") {
-      req.consumerId = decoded.UserInfo.consumerId;
-    } else if (req.role === "merchant") {
-      req.merchantId = decoded.UserInfo.merchantId;
+      if (req.role == "consumer") {
+        req.consumerId = decoded.UserInfo.consumerId;
+      } else if (req.role === "merchant") {
+        req.merchantId = decoded.UserInfo.merchantId;
+      }
+      next();
     }
-    next();
-  });
+  );
 };
 
 module.exports = verifyJWT;

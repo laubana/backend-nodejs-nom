@@ -1,7 +1,5 @@
 const Menu = require("../models/Menu");
 
-// Get all menu item
-
 const getAllMenu = async (req, res) => {
   try {
     const merchant = req.merchantId;
@@ -20,8 +18,6 @@ const getAllMenu = async (req, res) => {
     });
   }
 };
-
-// add new menu item
 
 const addMenuItem = async (req, res) => {
   try {
@@ -64,8 +60,6 @@ const addMenuItem = async (req, res) => {
     });
   }
 };
-
-// delete menu item
 
 const deleteMenuItem = async (req, res) => {
   try {
